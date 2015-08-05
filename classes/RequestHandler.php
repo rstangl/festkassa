@@ -125,23 +125,31 @@ class RequestHandler {
 	 * @exception	IOException
 	 */
 	protected static function writeAccountingForOrder_(Order $order) {
-		// TODO
-		/*
-		// Accounting Zeugs...
-		$d = date("D, d M Y - H:i:s :\t");
-		if ($fp = @fopen($cfg['accounting_file'], "a")) {
-			fwrite($fp, $d);
-			fwrite($fp, ($_REQUEST['erg'] > 0) ? "+" : "");
-			fwrite($fp, $_REQUEST['erg']);
-			fwrite($fp, "\n");
-			fclose($fp);
+		$config = Configuration::instance();
+		
+		if ($config->accountingFile() == '') {
+			return;
 		}
-		else {
-			echo "Die Abrechnungsdatei '". $cfg['accounting_file']
-			."' konnte nicht ge&ouml;ffnet werden.<br>";
+		
+		$fp = @fopen($config->accountingFile(), "a");
+		if (!$fp) {
+			echo "Die Abrechnungsdatei '". $config->accountingFile() ."' konnte nicht ge&ouml;ffnet werden.<br>";
 			echo "Das Abrechnungssystem wurde automatisch deaktiviert.";
+			return;
 		}
-		*/
+		
+		$date = date('Y-m-d H:i:s');
+		
+		foreach ( $order as $orderItem ) {
+			@fprintf($fp, "%s|%d|%s|%.2f|%.2f\n",
+					$date,
+					$orderItem->amount(),
+					$orderItem->article()->artName(),
+					$orderItem->article()->artStkPrice(),
+					$orderItem->sumPrice());
+		}
+		
+		@fclose($fp);
 	}
 	
 	/**
