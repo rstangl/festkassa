@@ -138,6 +138,7 @@ class RequestHandler {
 			return;
 		}
 		
+		date_default_timezone_set($config->getTimeZone());
 		$date = date('Y-m-d H:i:s');
 		
 		foreach ( $order as $orderItem ) {

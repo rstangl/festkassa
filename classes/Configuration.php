@@ -52,6 +52,7 @@ class Configuration {
 	public function lineeditFontSize()	{	return $this->lineeditFontSize_;	}
 	public function priceList()			{	return $this->priceList_;			}
 	public function accountingFile()	{	return $this->accountingFile_;		}
+	public function getTimeZone()		{	return $this->timeZone_;			}
 	/**#@- */
 	
 	
@@ -91,6 +92,7 @@ class Configuration {
 		$this->lineeditFontSize_	= $this->getVal_($cfg, 'lineedit_font_size',17);
 		$this->priceList_			= $this->getVal_($cfg, 'price_list',		'');
 		$this->accountingFile_		= $this->getVal_($cfg, 'accounting_file',	'');
+		$this->timeZone_			= $this->getVal_($cfg, 'time_zone',			'Europe/Vienna');
 	}
 	
 	/**
@@ -195,6 +197,11 @@ class Configuration {
 	 * @var string
 	 */
 	private $accountingFile_ = '';
+	
+	/**
+	 * @var string
+	 */
+	private $timeZone_ = '';
 	
 }
 
