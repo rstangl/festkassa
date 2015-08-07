@@ -53,6 +53,7 @@ class Configuration {
 	public function priceList()			{	return $this->priceList_;			}
 	public function accountingFile()	{	return $this->accountingFile_;		}
 	public function getTimeZone()		{	return $this->timeZone_;			}
+	public function waiterReceipt()		{	return $this->waiterReceipt_;		}
 	/**#@- */
 	
 	
@@ -93,6 +94,7 @@ class Configuration {
 		$this->priceList_			= $this->getVal_($cfg, 'price_list',		'');
 		$this->accountingFile_		= $this->getVal_($cfg, 'accounting_file',	'');
 		$this->timeZone_			= $this->getVal_($cfg, 'time_zone',			'Europe/Vienna');
+		$this->waiterReceipt_		= $this->getVal_($cfg, 'waiter_receipt',	false);
 	}
 	
 	/**
@@ -202,6 +204,11 @@ class Configuration {
 	 * @var string
 	 */
 	private $timeZone_ = '';
+	
+	/**
+	 * @var bool
+	 */
+	private $waiterReceipt_ = false;
 	
 }
 
