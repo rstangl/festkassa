@@ -166,8 +166,19 @@ class RequestHandler {
 		$config = Configuration::instance();
 		$printer = PrinterFactory::create($config->printerDriver());
 		
+		self::printOrderOrWaiterReceipt_($order, $printer, false);
+		
+		if ($config->waiterReceipt() == true) {
+			self::printOrderOrWaiterReceipt_($order, $printer, true);
+		}
+	}
+	
+	protected static function printOrderOrWaiterReceipt_(Order $order, Printer $printer, $waiterReceipt) {
+		// Drucker holen und konfigurieren
+		$config = Configuration::instance();
+		
 		$printer->setPort($config->printerPort());
-		if ($config->bigPrintFont() == true) {
+		if ($config->bigPrintFont() == true && $waiterReceipt == false) {
 			$printer->setFontSize(Printer::BIG_FONT);
 		} else {
 			$printer->setFontSize(Printer::NORMAL_FONT);
@@ -177,7 +188,9 @@ class RequestHandler {
 		 * Bestellung ausdrucken
 		 */
 		
-		$printer->printHeadLine($config->kassaName());
+		if ($waiterReceipt == false) {
+			$printer->printHeadLine($config->kassaName());
+		}
 		
 		// Höchste Artikel-Sortierungsnummer suchen
 		$maxArtGrpNr = 0;
@@ -194,8 +207,10 @@ class RequestHandler {
 		for ($artGrpNr = 0; $artGrpNr <= $maxArtGrpNr; $artGrpNr++) {
 			if ($found == true) {
 				// Bestellungspositionen mit der vorigen SortNr gefunden --> perforieren
-				$printer->newPage();
-				$printer->printHeadLine($config->kassaName());
+				if ($waiterReceipt == false) {
+					$printer->newPage();
+					$printer->printHeadLine($config->kassaName());
+				}
 			}
 			
 			$found = false;
@@ -223,7 +238,9 @@ class RequestHandler {
 		
 		// Nur wenn mehr als 1 Seite, Gesamtsumme auf eigene Seite drucken
 		if ($pageCount > 1) {
-			$printer->newPage();
+			if ($waiterReceipt == false) {
+				$printer->newPage();
+			}
 			$printer->printSum($order->sumPrice());
 		}
 		
