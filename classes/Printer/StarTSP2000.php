@@ -53,6 +53,7 @@ class Printer_StarTSP2000 implements Printer {
 		}
 		
 		fclose($fp);
+		$this->buffer_ = '';
 	}
 	
 	public function printHeadLine($headline) {
