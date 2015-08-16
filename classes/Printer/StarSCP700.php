@@ -53,6 +53,7 @@ class Printer_StarSCP700 implements Printer {
 		}
 		
 		fclose($fp);
+		$this->buffer_ = '';
 	}
 	
 	public function printHeadLine($headline) {
