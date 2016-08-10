@@ -11,7 +11,7 @@
  * @package ff.festkassa
  */
 
-define('FESTKASSA_VERSION', '1.3.0');
+define('FESTKASSA_VERSION', '1.4.0');
 
 require_once ('autoload.php');
 
