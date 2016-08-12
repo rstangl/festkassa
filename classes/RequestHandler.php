@@ -221,10 +221,17 @@ class RequestHandler {
 				if ($orderItem->article()->artGrpNr() == $artGrpNr) {
 					$found = true;
 					
-					$printer->printOrderLine(
-							$orderItem->amount(),
-							$orderItem->article()->artName()
-					);
+					if ($waiterReceipt == false) {
+						$printer->printOrderLine(
+								$orderItem->amount(),
+								$orderItem->article()->artName()
+						);
+					} else {
+						$printer->printOrderLineWithSum(
+								$orderItem->amount(),
+								$orderItem->article()->artName(),
+								$orderItem->sumPrice());
+					}
 					
 					$grpSum += $orderItem->sumPrice();
 				}
