@@ -69,6 +69,11 @@ class Printer_HtmlExporter implements Printer {
 		$this->buffer_ .= "<pre>$line</pre>\n";
 	}
 	
+	public function printOrderLineWithSum($amount, $artName, $lineSum) {
+		$line = sprintf("%-2d %-26s %6.2f\n", $amount, $artName, $lineSum);
+		$this->buffer_ .= "<pre>$line</pre>\n";
+	}
+	
 	public function printGrpSum($grpSum) {
 		$sum = sprintf("EUR %01.2f", $grpSum);
 		$this->buffer_ .= "<div style=\"text-align: right;\">";

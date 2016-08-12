@@ -64,6 +64,10 @@ class Printer_StarTSP2000 implements Printer {
 		$this->buffer_ .= sprintf("%-5d %s\n", $amount, $artName);
 	}
 	
+	public function printOrderLineWithSum($amount, $artName, $lineSum) {
+		$this->buffer_ .= sprintf("%-2d %-26s %6.2f\n", $amount, $artName, $lineSum);
+	}
+	
 	public function printGrpSum($grpSum) {
 		$sum = sprintf("EUR  %01.2f", $grpSum);
 		$this->buffer_ .= "\n                         \x1bE{$sum}\x1bF\n";

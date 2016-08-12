@@ -76,6 +76,17 @@ interface Printer {
 	public function printOrderLine($amount, $artName);
 	
 	/**
+	 * Druckt eine Bestellungs-Zeile inkl. Zeilensumme.
+	 *
+	 * @param	int		$amount		Menge
+	 * @param	string	$artName	Artikel-Bezeichnung
+	 * @param	float	$lineSum	Zeilensumme
+	 *
+	 * @exception	PrinterException
+	 */
+	public function printOrderLineWithSum($amount, $artName, $lineSum);
+	
+	/**
 	 * Druckt eine Zwischensumme.
 	 * 
 	 * @param	float	$grpSum		Zwischensumme
