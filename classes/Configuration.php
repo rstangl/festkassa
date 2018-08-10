@@ -43,8 +43,6 @@ class Configuration {
 	public function printerPort()		{	return $this->printerPort_;			}
 	public function bigPrintFont()		{	return $this->bigPrintFont_;		}
 	public function linesPerCol()		{	return $this->linesPerCol_;			}
-	public function backgroundImage()	{	return $this->backgroundImage_;		}
-	public function backgroundColor()	{	return $this->backgroundColor_;		}
 	public function addButtonWidth()	{	return $this->addButtonWidth_;		}
 	public function subtButtonWidth()	{	return $this->subtButtonWidth_;		}
 	public function buttonHeight()		{	return $this->buttonHeight_;		}
@@ -84,8 +82,6 @@ class Configuration {
 		$this->printerPort_			= $this->getVal_($cfg, 'printer_port',		'/dev/null');
 		$this->bigPrintFont_		= $this->getVal_($cfg, 'big_print_font',	false);
 		$this->linesPerCol_			= $this->getVal_($cfg, 'lines_per_col',		10);
-		$this->backgroundImage_		= $this->getVal_($cfg, 'background_image',	'');
-		$this->backgroundColor_		= $this->getVal_($cfg, 'background_color',	'#ffffee');
 		$this->addButtonWidth_		= $this->getVal_($cfg, 'add_button_width',	230);
 		$this->subtButtonWidth_		= $this->getVal_($cfg, 'subt_button_width',	32);
 		$this->buttonHeight_		= $this->getVal_($cfg, 'button_height',		33);
@@ -154,16 +150,6 @@ class Configuration {
 	 * @var int
 	 */
 	private $linesPerCol_ = 0;
-	
-	/**
-	 * @var string
-	 */
-	private $backgroundImage_ = '';
-	
-	/**
-	 * @var string
-	 */
-	private $backgroundColor_ = '';
 	
 	/**
 	 * @var int

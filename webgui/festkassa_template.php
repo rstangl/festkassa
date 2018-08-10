@@ -7,22 +7,25 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<style type="text/css">
 	body {
-		background-image:url("<?php echo $config->backgroundImage() ?>");
 		background-position:center;
 		background-repeat:no-repeat;
-		background-color:<?php echo $config->backgroundColor() ?>;
+		background-color:#222;
+		color:#eee;
 	}
 
 	input.add_btn {
-		background-color:#ccccff;
+		background-color:#333;
+		border:1px solid black;
 		width:<?php echo $config->addButtonWidth() ?>px;
 		height:<?php echo $config->buttonHeight() ?>px;
 		font-size:<?php echo $config->buttonFontSize() ?>px;
 		text-align:left;
+		color:#eee;
 	}
 
 	input.subt_btn {
-		background-color:#eeeeee;
+		background-color:#333;
+		border:1px solid black;
 		width:<?php echo $config->subtButtonWidth() ?>px;
 		height:<?php echo $config->buttonHeight() ?>px;
 		font-size:<?php echo $config->buttonFontSize() ?>px;
@@ -31,32 +34,38 @@
 	}
 
 	input.del_btn {
-		background-color:#eeeeee;
+		background-color:#333;
 		width:150px;
 		height:55px;
 		font-size:20px;
 		color:red;
 		font-weight:bold;
+		border:1px solid #000000;
 	}
 
 	input.confirm_btn {
-		background-color:#eeeeee;
+		background-color:#333;
 		width:260px;
 		height:55px;
 		font-size:20px;
-		color:green;
+		color:lightgreen;
 		font-weight:bold;
+		border:1px solid #000000;
 	}
 
 	input.stk {
-		background-color:#ffcccc;
+		height:<?php echo $config->buttonHeight() ?>px;
+		background-color:#224;
+		color:#eee;
 		font-size:<?php echo $config->lineeditFontSize() ?>px;
 		text-align:right;
 		border:1px solid #000000;
 	}
 
 	input.stk0 {
-		background-color:#ffffff;
+		height:<?php echo $config->buttonHeight() ?>px;
+		background-color:#111;
+		color:#eee;
 		font-size:<?php echo $config->lineeditFontSize() ?>px;
 		text-align:right;
 		border:1px solid #000000;
@@ -79,7 +88,7 @@
 			<span style="font-size:18px"><i>Betrag:</i>&nbsp;&nbsp;&nbsp;</span>
 			<span style="font-size:26px">&euro;&nbsp;&nbsp;</span>
 			<input type="text" size="5" name="erg" value="<?php printf("%.2f", $lastSumPrice) ?>"
-			readonly="yes" style="font-size:44px; color:red; height:55px; border:solid black 1px" />
+			readonly="yes" style="font-size:44px; background-color:#111; color:red; height:55px; border:solid black 1px" />
 			<input type="hidden" name="last_erg" value="1" />
 			<input type="hidden" name="action" value="confirm" />
 		</td>
@@ -191,13 +200,13 @@ style="border-width:1px; border-color:black; border-style:solid">
 			<td><input type="text" name="extra_artikel_stk" value="0" size="2" readonly="yes"
 					class="stk0" /></td>
 			<td><input type="button" onclick="add_extra()" class="subt_btn" value="+"
-					style="color: green;" /></td>
+					style="color:lightgreen;" /></td>
 			<td><input type="text" name="extra_artikel_name" value="" class="stk0" size="40"
-					style="text-align: left; background-color: #ccccff;" /></td>
+					style="text-align:left; background-color:#111; color:#eee;" /></td>
 			<td><input type="text" name="extra_artikel_stk_preis" value="0.00" class="stk0"
-					size="5" style="background-color: #ccccff;" /></td>
+					size="5" style="background-color:#111; color:#eee;" /></td>
 			<td><input type="text" name="extra_artikel_sort_nr" value="0" class="stk0" size="2"
-					style="background-color: #ccccff;" /></td>
+					style="background-color:#111; color:#eee;" /></td>
 			<td><input type="text" name="extra_artikel_ges_preis" value="0.00" size="5"
 					class="stk0" readonly="yes" size="5" /></td>
 		</tr>
