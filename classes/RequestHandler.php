@@ -29,8 +29,9 @@ class RequestHandler {
 		self::$priceList_ = new PriceList($config->priceList());
 		
 		// Wurde auf "Nächste Bestellung" geklickt?
-		if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'confirm' &&
-			isset($_REQUEST['erg']) && $_REQUEST['erg'] != 0) {
+		if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'confirm'
+				&& isset($_REQUEST['last_erg']) && $_REQUEST['last_erg'] == 0
+				&& isset($_REQUEST['erg']) && $_REQUEST['erg'] != 0) {
 			
 			$order = null;
 			
