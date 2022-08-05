@@ -11,7 +11,7 @@
  * @package ff.festkassa
  */
 
-function __autoload($class) {
+spl_autoload_register(function ($class) {
 	$class = str_replace('_', '/', $class);
 	$fileName = "./classes/{$class}.php";
 	
@@ -19,7 +19,5 @@ function __autoload($class) {
 		throw new IOException("Klasse »{$fileName}« konnte nicht geladen werden");
 	}
 	
-	require ($fileName);
-}
-
-?>
+	include ($fileName);
+});
